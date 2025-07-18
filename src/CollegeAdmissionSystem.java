@@ -54,7 +54,7 @@ public class CollegeAdmissionSystem {
         ps.setString(2, email);
         ps.setInt(3, marks);
         ps.executeUpdate();
-        System.out.println("✅ Student registered successfully.");
+        System.out.println(" Student registered successfully.");
         con.close();
     }
 
@@ -70,7 +70,7 @@ public class CollegeAdmissionSystem {
         ps.setString(1, name);
         ps.setInt(2, cutOff);
         ps.executeUpdate();
-        System.out.println("✅ Course added successfully.");
+        System.out.println(" Course added successfully.");
         con.close();
     }
 
@@ -97,16 +97,16 @@ public class CollegeAdmissionSystem {
             check.setInt(2, courseId);
             ResultSet checkRs = check.executeQuery();
             if (checkRs.next()) {
-                System.out.println("⚠️ Already applied to this course.");
+                System.out.println(" Already applied to this course.");
             } else {
                 PreparedStatement ps2 = con.prepareStatement("INSERT INTO Applications(studentId, courseId) VALUES (?, ?)");
                 ps2.setInt(1, studentId);
                 ps2.setInt(2, courseId);
                 ps2.executeUpdate();
-                System.out.println("✅ Application submitted.");
+                System.out.println(" Application submitted.");
             }
         } else {
-            System.out.println("❌ Student not found.");
+            System.out.println(" Student not found.");
         }
 
         con.close();
@@ -130,7 +130,7 @@ public class CollegeAdmissionSystem {
         PreparedStatement ps = con.prepareStatement(sql);
         int updated = ps.executeUpdate();
 
-        System.out.println("✅ Applications processed: " + updated);
+        System.out.println(" Applications processed: " + updated);
         con.close();
     }
 
@@ -162,6 +162,6 @@ public class CollegeAdmissionSystem {
 
         writer.close();
         con.close();
-        System.out.println("✅ Admission list saved to: admission_list.csv");
+        System.out.println(" Admission list saved to: admission_list.csv");
     }
 }
